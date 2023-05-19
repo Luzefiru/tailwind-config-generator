@@ -1,4 +1,6 @@
 import CodeBlock from './components/ui/CodeBlock';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
@@ -33,6 +35,7 @@ export default function App() {
           <CodeBlock className="h-full rounded-lg" content={code} />
         </section>
       </main>
+      <ToastContainer />
     </div>
   );
 }
