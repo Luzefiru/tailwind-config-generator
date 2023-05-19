@@ -1,10 +1,12 @@
-function App() {
+import CodeBlock from './components/ui/CodeBlock';
+
+export default function App() {
   return (
     <div className="App h-full bg-zinc-100">
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
-      <main className="grid grid-cols-12 mx-16">
+      <main className="grid grid-cols-12 mx-16 pb-16 h-[calc(100%-4rem-2.5rem)]">
         <section className="col-span-7 mr-6">
           <div className="flex gap-4 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
@@ -27,9 +29,35 @@ function App() {
             </button>
           </div>
         </section>
+        <section className="col-span-5 overflow-y-hidden">
+          <CodeBlock className="h-full rounded-lg" content={code} />
+        </section>
       </main>
     </div>
   );
 }
 
-export default App;
+var code = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        'soft-orange': 'hsl(35, 77%, 62%)',
+        'soft-red': 'hsl(5, 85%, 63%)',
+        'off-white': 'hsl(36, 100%, 99%)',
+        'grayish-blue': 'hsl(233, 8%, 79%)',
+        'dark-grayish-blue': 'hsl(236, 13%, 42%)',
+        'very-dark-blue': 'hsl(240, 100%, 5%)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui'],
+      },
+      fontSize: {
+        base: '15px',
+      },
+    },
+  },
+  plugins: [],
+};
+`;
