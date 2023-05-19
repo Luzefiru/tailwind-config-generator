@@ -8,7 +8,7 @@ export default function App() {
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
-      <main className="grid grid-cols-12 mx-16 pb-16 h-[calc(100%-4rem-2.5rem)]">
+      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 pb-4 lg:mx-16 lg:pb-16 h-[calc(100%-4rem-2.5rem)]">
         <section className="col-span-7 mr-6">
           <div className="flex gap-4 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
@@ -31,7 +31,7 @@ export default function App() {
             </button>
           </div>
         </section>
-        <section className="col-span-5 overflow-y-hidden">
+        <section className="col-span-5 overflow-y-hidden mt-10 xl:mt-0">
           <CodeBlock className="h-full rounded-lg" content={code} />
         </section>
       </main>
