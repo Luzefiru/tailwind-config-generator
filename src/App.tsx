@@ -4,11 +4,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
-    <div className="App h-full bg-zinc-100">
+    <div className="App">
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
-      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 pb-4 lg:mx-16 lg:pb-16 h-[calc(100%-4rem-2.5rem)]">
+      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 lg:mx-16">
         <section className="col-span-7 mr-6">
           <div className="flex gap-4 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
@@ -32,15 +32,39 @@ export default function App() {
           </div>
         </section>
         <section className="col-span-5 overflow-y-hidden mt-10 xl:mt-0">
-          <CodeBlock className="h-full rounded-lg" content={code} />
+          <CodeBlock className="h-[80vh] rounded-lg" content={code} />
         </section>
       </main>
+      <footer className="pt-10"></footer>
       <ToastContainer />
     </div>
   );
 }
 
 var code = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        'soft-orange': 'hsl(35, 77%, 62%)',
+        'soft-red': 'hsl(5, 85%, 63%)',
+        'off-white': 'hsl(36, 100%, 99%)',
+        'grayish-blue': 'hsl(233, 8%, 79%)',
+        'dark-grayish-blue': 'hsl(236, 13%, 42%)',
+        'very-dark-blue': 'hsl(240, 100%, 5%)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui'],
+      },
+      fontSize: {
+        base: '15px',
+      },
+    },
+  },
+  plugins: [],
+};
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
