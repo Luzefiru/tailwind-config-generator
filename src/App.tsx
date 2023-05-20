@@ -1,4 +1,5 @@
 import CodeBlock from './components/ui/CodeBlock';
+import ColorCard from './components/ColorCard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,8 +10,8 @@ export default function App() {
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
       <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 lg:mx-16">
-        <section className="col-span-7 mr-6">
-          <div className="flex gap-4 items-center">
+        <section className="col-span-7 mr-16">
+          <div className="flex gap-4 mb-10 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
             <button className="rounded-md p-1 hover:bg-zinc-200 transition-colors">
               <svg
@@ -30,6 +31,14 @@ export default function App() {
               </svg>
             </button>
           </div>
+          <div className="grid grid-cols-5 gap-6 gap-y-10">
+            <ColorCard name="soft-orange" value="hsl(35, 77%, 62%)" />
+            <ColorCard name="soft-red" value="hsl(5, 85%, 63%)" />
+            <ColorCard name="off-white" value="hsl(36, 100%, 99%)" />
+            <ColorCard name="grayish-blue" value="hsl(233, 8%, 79%)" />
+            <ColorCard name="dark-grayish-blue" value="hsl(236, 13%, 42%)" />
+            <ColorCard name="very-dark-blue" value="hsl(240, 100%, 5%)" />
+          </div>
         </section>
         <section className="col-span-5 overflow-y-hidden mt-10 xl:mt-0">
           <CodeBlock className="h-[80vh] rounded-lg" content={code} />
@@ -42,29 +51,6 @@ export default function App() {
 }
 
 var code = `/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        'soft-orange': 'hsl(35, 77%, 62%)',
-        'soft-red': 'hsl(5, 85%, 63%)',
-        'off-white': 'hsl(36, 100%, 99%)',
-        'grayish-blue': 'hsl(233, 8%, 79%)',
-        'dark-grayish-blue': 'hsl(236, 13%, 42%)',
-        'very-dark-blue': 'hsl(240, 100%, 5%)',
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui'],
-      },
-      fontSize: {
-        base: '15px',
-      },
-    },
-  },
-  plugins: [],
-};
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
