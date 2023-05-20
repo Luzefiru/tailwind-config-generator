@@ -26,6 +26,7 @@ export default function CodeBlock({ content, className }: PropTypes) {
           }}
           className="hidden md:block p-4 absolute top-0 right-0 text-stone-600 hover:text-zinc-100"
           aria-label="Copy to Clipboard"
+          title="Copy to Clipboard"
           type="button"
         >
           <svg

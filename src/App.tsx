@@ -16,7 +16,11 @@ export default function App() {
         >
           <div className="flex gap-4 mb-10 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
-            <button className="rounded-md p-1 hover:bg-zinc-200 transition-colors">
+            <button
+              aria-label="Add a Color"
+              title="Add a Color"
+              className="rounded-md p-1 hover:bg-zinc-200 transition-colors"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 enable-background="new 0 0 24 24"
