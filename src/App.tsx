@@ -5,8 +5,31 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 
+import GenerateObject from './utils/GenerateObject';
+import generateTailwindConfig from './utils/GenerateTailwindConfig';
+
 export default function App() {
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
+  const [colorUtilities, setColorUtilities] = useState([...defaults]);
+  const [configCode, setConfigCode] = useState(
+    generateTailwindConfig(
+      ['./src/**/*.{js,jsx,ts,tsx}'],
+      GenerateObject.colors(colorUtilities)
+    )
+  );
+
+  const handleChangeColorUtilities = (
+    newColorUtilities: typeof colorUtilities
+  ) => {
+    setColorUtilities(newColorUtilities);
+
+    setConfigCode(
+      generateTailwindConfig(
+        undefined,
+        GenerateObject.colors(newColorUtilities)
+      )
+    );
+  };
 
   const toggleColorPickerVisibility = () => {
     setDisplayColorPicker(!displayColorPicker);
@@ -51,19 +74,16 @@ export default function App() {
             </button>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-y-10 px-4 md:p-0">
-            <ColorCard name="soft-orange" value="hsl(35, 77%, 62%)" />
-            <ColorCard name="soft-red" value="hsl(5, 85%, 63%)" />
-            <ColorCard name="off-white" value="hsl(36, 100%, 99%)" />
-            <ColorCard name="grayish-blue" value="hsl(233, 8%, 79%)" />
-            <ColorCard name="dark-grayish-blue" value="hsl(236, 13%, 42%)" />
-            <ColorCard name="very-dark-blue" value="hsl(240, 100%, 5%)" />
+            {colorUtilities.map((e) => (
+              <ColorCard name={e.name} value={e.value} />
+            ))}
           </div>
         </section>
         <section
           aria-label="Outputted Tailwind Configuration File"
           className="col-span-5 overflow-y-hidden mt-12 xl:mt-0"
         >
-          <CodeBlock className="h-[80vh] rounded-lg" content={code} />
+          <CodeBlock className="h-[80vh] rounded-lg" content={configCode} />
         </section>
       </main>
       <footer className="pt-10"></footer>
@@ -72,27 +92,12 @@ export default function App() {
   );
 }
 
-var code = `/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        'soft-orange': 'hsl(35, 77%, 62%)',
-        'soft-red': 'hsl(5, 85%, 63%)',
-        'off-white': 'hsl(36, 100%, 99%)',
-        'grayish-blue': 'hsl(233, 8%, 79%)',
-        'dark-grayish-blue': 'hsl(236, 13%, 42%)',
-        'very-dark-blue': 'hsl(240, 100%, 5%)',
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui'],
-      },
-      fontSize: {
-        base: '15px',
-      },
-    },
-  },
-  plugins: [],
-};
-`;
+var defaults = [
+  { name: 'primary', value: '#6300ef' },
+  { name: 'primary-variant', value: '#3701b2' },
+  { name: 'secondary', value: '#02dbc6' },
+  { name: 'secondary-variant', value: '#018786' },
+  { name: 'error', value: '#b10021' },
+  { name: 'background', value: '#fefffe' },
+  { name: 'on-background', value: '#010001' },
+];
