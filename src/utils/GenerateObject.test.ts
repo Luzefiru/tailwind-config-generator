@@ -8,8 +8,11 @@ describe('colors', () => {
     ]);
 
     const expectedOutput = {
-      ruby: '#E0115F',
-      'off-white': '#FAF9F6',
+      name: 'colors',
+      value: {
+        ruby: '#E0115F',
+        'off-white': '#FAF9F6',
+      },
     };
 
     expect(result).toEqual(expectedOutput);
@@ -22,8 +25,11 @@ describe('colors', () => {
     ]);
 
     const expectedOutput = {
-      ruby: 'hsl(337, 86%, 47%)',
-      'off-white': 'rgba(250, 249, 246, 1)',
+      name: 'colors',
+      value: {
+        ruby: 'hsl(337, 86%, 47%)',
+        'off-white': 'rgba(250, 249, 246, 1)',
+      },
     };
 
     expect(result).toEqual(expectedOutput);
