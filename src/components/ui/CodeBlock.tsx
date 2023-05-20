@@ -5,19 +5,18 @@ import copyTextToClipboard from '../../utils/copyTextToKeyboard';
 
 interface PropTypes {
   content: string;
-  className?: string;
 }
 
-export default function CodeBlock({ content, className }: PropTypes) {
+export default function CodeBlock({ content }: PropTypes) {
   useEffect(() => {
     Prism.highlightAll();
-  }, []);
+  }, [content]);
 
   return (
     <>
       <pre
         aria-label="Your Tailwind CSS Configuation File"
-        className={`relative ${className}`}
+        className="relative h-[80vh] rounded-lg"
       >
         <code className="language-javascript">{content}</code>
         <button

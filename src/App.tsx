@@ -83,7 +83,7 @@ export default function App() {
           aria-label="Outputted Tailwind Configuration File"
           className="col-span-5 overflow-y-hidden mt-12 xl:mt-0"
         >
-          <CodeBlock className="h-[80vh] rounded-lg" content={configCode} />
+          <CodeBlock content={configCode} />
         </section>
       </main>
       <footer className="pt-10"></footer>
