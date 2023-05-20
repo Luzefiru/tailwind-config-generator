@@ -1,5 +1,5 @@
-import generateTailwindConfig from './GenerateTailwindConfig';
 import GenerateObject from './GenerateObject';
+import generateTailwindConfig from './GenerateTailwindConfig';
 
 describe('generateTailwindConfig', () => {
   it('should create a formatted tailwind.config.js file', () => {
