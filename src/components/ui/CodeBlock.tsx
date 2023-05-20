@@ -15,7 +15,10 @@ export default function CodeBlock({ content, className }: PropTypes) {
 
   return (
     <>
-      <pre className={`relative ${className}`}>
+      <pre
+        aria-label="Your Tailwind CSS Configuation File"
+        className={`relative ${className}`}
+      >
         <code className="language-javascript">{content}</code>
         <button
           onClick={() => {

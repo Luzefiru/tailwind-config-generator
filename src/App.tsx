@@ -10,7 +10,10 @@ export default function App() {
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
       <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 md:mx-10 lg:mx-16">
-        <section className="col-span-7 xl:mr-16">
+        <section
+          aria-label="Design System Configuration"
+          className="col-span-7 xl:mr-16"
+        >
           <div className="flex gap-4 mb-10 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
             <button className="rounded-md p-1 hover:bg-zinc-200 transition-colors">
@@ -40,7 +43,10 @@ export default function App() {
             <ColorCard name="very-dark-blue" value="hsl(240, 100%, 5%)" />
           </div>
         </section>
-        <section className="col-span-5 overflow-y-hidden mt-12 xl:mt-0">
+        <section
+          aria-label="Outputted Tailwind Configuration File"
+          className="col-span-5 overflow-y-hidden mt-12 xl:mt-0"
+        >
           <CodeBlock className="h-[80vh] rounded-lg" content={code} />
         </section>
       </main>
