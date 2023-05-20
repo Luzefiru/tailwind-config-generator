@@ -27,7 +27,7 @@ export default function ColorCard({ name, value }: PropTypes) {
       ></div>
       <div
         ref={ColorCardText}
-        className="text-[0.75rem] font-medium text-neutral-700 min-w-full whitespace-nowrap absolute -bottom-[1.5rem] text-center cursor-text"
+        className="text-[2.5vw] -bottom-[1.115rem] md:text-[0.75rem] md:-bottom-[1.5rem] font-medium text-neutral-700 min-w-full whitespace-nowrap absolute  text-center cursor-text"
       >
         <code>{isShowingValue ? value : name}</code>
       </div>

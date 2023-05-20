@@ -9,8 +9,8 @@ export default function App() {
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
-      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 lg:mx-16">
-        <section className="col-span-7 mr-16">
+      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 md:mx-10 lg:mx-16">
+        <section className="col-span-7 xl:mr-16">
           <div className="flex gap-4 mb-10 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
             <button className="rounded-md p-1 hover:bg-zinc-200 transition-colors">
@@ -31,7 +31,7 @@ export default function App() {
               </svg>
             </button>
           </div>
-          <div className="grid grid-cols-5 gap-6 gap-y-10">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-y-10 px-4 md:p-0">
             <ColorCard name="soft-orange" value="hsl(35, 77%, 62%)" />
             <ColorCard name="soft-red" value="hsl(5, 85%, 63%)" />
             <ColorCard name="off-white" value="hsl(36, 100%, 99%)" />
@@ -40,7 +40,7 @@ export default function App() {
             <ColorCard name="very-dark-blue" value="hsl(240, 100%, 5%)" />
           </div>
         </section>
-        <section className="col-span-5 overflow-y-hidden mt-10 xl:mt-0">
+        <section className="col-span-5 overflow-y-hidden mt-12 xl:mt-0">
           <CodeBlock className="h-[80vh] rounded-lg" content={code} />
         </section>
       </main>
