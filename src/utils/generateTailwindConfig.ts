@@ -18,7 +18,7 @@ interface TailwindConfigObject {
 export default function generateTailwindConfig(
   contentBlobs: string[] | undefined,
   ...namedExtendObjects: NamedExtendObject[] | undefined[]
-) {
+): string {
   const header: string = `/** @type {import('tailwindcss').Config} */
 module.exports =`;
   const defaultConfig: TailwindConfigObject = {
