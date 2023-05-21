@@ -5,6 +5,7 @@ export default function NewColorCard() {
 
   return (
     <button
+      aria-label="Add a Color"
       title="Add a Color"
       tabIndex={0}
       className="w-full rounded-md hover:scale-105 focus:scale-105 transition cursor-pointer relative"
