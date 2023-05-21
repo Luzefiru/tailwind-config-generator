@@ -54,14 +54,14 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
               <h2 className="mb-2 font-semibold">Upload an Image</h2>
               <input
                 aria-label="Upload a Custom Image"
-                className="text-[0.6rem] sm:text-sm sm:w-[80%]"
+                className="text-[0.6rem] sm:text-sm sm:w-[80%] cursor-pointer"
                 type="file"
                 onChange={onImageChange}
               />
             </div>
             <input
               aria-label="Choose a Color"
-              className="h-14 w-14 rounded-full"
+              className="h-14 w-14 rounded-full cursor-pointer"
               type="color"
               value={color}
               onChange={handleColorChange}
