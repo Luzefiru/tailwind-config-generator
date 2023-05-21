@@ -24,6 +24,17 @@
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  input::-webkit-color-swatch-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+
+  input::-webkit-color-swatch {
+    border: none;
+    border-radius: 0.25rem;
+    aspect-ratio: 1/1;
+  }
 }
 
 @layer components {

@@ -1,14 +1,29 @@
+import { useState } from 'react';
+import ImageIcon from '../assets/panorama.svg';
+
 interface PropTypes {
   className: string;
   handleClose: () => void;
 }
 
 export default function NewColorDialog({ className, handleClose }: PropTypes) {
+  const [image, setImage] = useState<string | undefined>(undefined);
+
+  const onImageChange = (e: any) => {
+    if (e.target.files && e.target.files[0]) {
+      let img = e.target.files[0];
+      setImage(URL.createObjectURL(img));
+    }
+  };
+
   return (
     <>
-      <div className={`cover bg-zinc-700 opacity-40 ${className}`} />
+      <div
+        onClick={handleClose}
+        className={`cover bg-zinc-700 opacity-40 ${className}`}
+      />
       <div className={`dialog fade-in ${className}`}>
-        <div className="p-4 rounded-lg bg-zinc-50 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
+        <div className="flex flex-col p-4 rounded-lg bg-neutral-100 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
           <div className="w-full flex justify-end">
             <svg
               onClick={handleClose}
@@ -24,7 +39,20 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
               />
             </svg>
           </div>
-          <input type="color" />
+          <div className="overflow-hidden flex-grow m-4 mb-0 bg-white shadow-sm rounded-lg flex items-center justify-center">
+            <img
+              className="rounded object-contain p-2"
+              alt="Your Upload"
+              src={image ? image : ImageIcon}
+            />
+          </div>
+          <div className="m-4 p-4 bg-white shadow-sm rounded-lg flex items-center justify-between">
+            <div>
+              <h2 className="mb-2 font-semibold">Upload an Image</h2>
+              <input className="text-sm" type="file" onChange={onImageChange} />
+            </div>
+            <input className="h-14 w-14 rounded-full" type="color" />
+          </div>
         </div>
       </div>
     </>
