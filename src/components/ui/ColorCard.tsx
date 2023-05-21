@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 interface PropTypes {
   name: string;
   value: string;
+  key: string;
 }
 
 export default function ColorCard({ name, value }: PropTypes) {

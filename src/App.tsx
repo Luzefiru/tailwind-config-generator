@@ -1,5 +1,5 @@
 import CodeBlock from './components/ui/CodeBlock';
-import ColorCard from './components/ColorCard';
+import ColorCard from './components/ui/ColorCard';
 import ColorPicker from './components/ColorPicker';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import GenerateObject from './utils/GenerateObject';
 import generateTailwindConfig from './utils/GenerateTailwindConfig';
+import hash from './utils/hash';
 
 export default function App() {
   const [colorUtilities, setColorUtilities] = useState([...defaults]);
@@ -70,7 +71,11 @@ export default function App() {
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-y-10 px-4 md:p-0">
             {colorUtilities.map((e) => (
-              <ColorCard name={e.name} value={e.value} />
+              <ColorCard
+                name={e.name}
+                value={e.value}
+                key={hash(e.name + e.value)}
+              />
             ))}
             <ColorPicker addColor={handleSubmitColorUtility} />
           </div>

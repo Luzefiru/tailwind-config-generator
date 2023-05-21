@@ -5,7 +5,7 @@ interface PropTypes {
   addColor: (name: string, value: string) => void;
 }
 
-export default function NewColorCard({ addColor }: PropTypes) {
+export default function ColorPicker({ addColor }: PropTypes) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
