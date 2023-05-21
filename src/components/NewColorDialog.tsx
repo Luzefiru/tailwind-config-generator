@@ -8,6 +8,7 @@ interface PropTypes {
 
 export default function NewColorDialog({ className, handleClose }: PropTypes) {
   const [image, setImage] = useState<string | undefined>(undefined);
+  const [name, setName] = useState<string>('new-color');
   const [color, setColor] = useState<string>('#000000');
 
   const onImageChange = (e: any) => {
@@ -17,9 +18,14 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
     }
   };
 
-  const handleCancel = () => {
-    setImage(undefined);
+  const setDefault = () => {
+    setName('new-color');
     setColor('#000000');
+    setImage(undefined);
+  };
+
+  const handleCancel = () => {
+    setDefault();
     handleClose();
   };
 
@@ -29,9 +35,12 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
 
   const handleSubmit = () => {
     console.log(color);
-    setColor('#000000');
-    setImage(undefined);
+    setDefault();
     handleClose();
+  };
+
+  const handleTextChange = (e: any) => {
+    setName(e.target.value);
   };
 
   return (
@@ -42,6 +51,29 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
       />
       <section className={`dialog fade-in ${className}`}>
         <div className="flex flex-col p-6 rounded-lg bg-neutral-100 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
+          <pre className="flex items-center mb-2">
+            <div className="relative w-full">
+              <input
+                onChange={handleTextChange}
+                className="span w-full pl-[36px] rounded-lg text-2xl font-semibold bg-transparent"
+                type="text"
+                value={name}
+              />
+              <svg
+                className="absolute left-1 top-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <title>pencil</title>
+                <path
+                  fill="currentColor"
+                  d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
+                />
+              </svg>
+            </div>
+          </pre>
           <div className="overflow-hidden flex-grow mb-4 bg-white shadow-sm rounded-lg flex items-center justify-center">
             <img
               className="rounded-xl object-contain p-2"

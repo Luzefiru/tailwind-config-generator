@@ -1,6 +1,6 @@
 import CodeBlock from './components/ui/CodeBlock';
 import ColorCard from './components/ColorCard';
-import NewColorCard from './components/NewColorCard';
+import ColorPicker from './components/ColorPicker';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
@@ -68,7 +68,7 @@ export default function App() {
             {colorUtilities.map((e) => (
               <ColorCard name={e.name} value={e.value} />
             ))}
-            <NewColorCard />
+            <ColorPicker />
           </div>
         </section>
         <section
