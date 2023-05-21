@@ -19,6 +19,7 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
 
   const handleCancel = () => {
     setImage(undefined);
+    setColor('#000000');
     handleClose();
   };
 
@@ -28,6 +29,8 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
 
   const handleSubmit = () => {
     console.log(color);
+    setColor('#000000');
+    setImage(undefined);
     handleClose();
   };
 
