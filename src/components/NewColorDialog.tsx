@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ImageIcon from '../assets/panorama.svg';
+import { toast } from 'react-toastify';
 
 interface PropTypes {
   className: string;
@@ -40,7 +41,18 @@ export default function NewColorDialog({
 
   const handleSubmit = () => {
     addColor(name, color);
+    toast.success(`Added ${name}`, {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
     setDefault();
+
     handleClose();
   };
 
