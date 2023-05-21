@@ -1,6 +1,6 @@
 import CodeBlock from './components/ui/CodeBlock';
 import ColorCard from './components/ColorCard';
-import ColorPicker from './components/ui/ColorPicker';
+import NewColorCard from './components/NewColorCard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
@@ -9,7 +9,6 @@ import GenerateObject from './utils/GenerateObject';
 import generateTailwindConfig from './utils/GenerateTailwindConfig';
 
 export default function App() {
-  const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const [colorUtilities, setColorUtilities] = useState([...defaults]);
   const [configCode, setConfigCode] = useState(
     generateTailwindConfig(
@@ -31,10 +30,6 @@ export default function App() {
     );
   };
 
-  const toggleColorPickerVisibility = () => {
-    setDisplayColorPicker(!displayColorPicker);
-  };
-
   return (
     <div className="App">
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
@@ -45,13 +40,9 @@ export default function App() {
           aria-label="Design System Configuration"
           className="col-span-7 xl:mr-16"
         >
-          {displayColorPicker ? (
-            <ColorPicker handleClose={toggleColorPickerVisibility} />
-          ) : null}
           <div className="flex gap-4 mb-10 items-center">
             <h1 className="text-6xl font-semibold">Colors</h1>
             <button
-              onClick={toggleColorPickerVisibility}
               aria-label="Add a Color"
               title="Add a Color"
               className="rounded-md p-1 hover:bg-zinc-200 transition-colors"
@@ -77,6 +68,7 @@ export default function App() {
             {colorUtilities.map((e) => (
               <ColorCard name={e.name} value={e.value} />
             ))}
+            <NewColorCard />
           </div>
         </section>
         <section
