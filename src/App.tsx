@@ -30,6 +30,10 @@ export default function App() {
     );
   };
 
+  const handleSubmitColorUtility = (name: string, value: string) => {
+    handleChangeColorUtilities([...colorUtilities, { name, value }]);
+  };
+
   return (
     <div className="App">
       <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
@@ -68,7 +72,7 @@ export default function App() {
             {colorUtilities.map((e) => (
               <ColorCard name={e.name} value={e.value} />
             ))}
-            <ColorPicker />
+            <ColorPicker addColor={handleSubmitColorUtility} />
           </div>
         </section>
         <section

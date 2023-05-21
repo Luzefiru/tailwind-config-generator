@@ -4,9 +4,14 @@ import ImageIcon from '../assets/panorama.svg';
 interface PropTypes {
   className: string;
   handleClose: () => void;
+  addColor: (name: string, value: string) => void;
 }
 
-export default function NewColorDialog({ className, handleClose }: PropTypes) {
+export default function NewColorDialog({
+  className,
+  handleClose,
+  addColor,
+}: PropTypes) {
   const [image, setImage] = useState<string | undefined>(undefined);
   const [name, setName] = useState<string>('new-color');
   const [color, setColor] = useState<string>('#000000');
@@ -34,7 +39,7 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
   };
 
   const handleSubmit = () => {
-    console.log(color);
+    addColor(name, color);
     setDefault();
     handleClose();
   };

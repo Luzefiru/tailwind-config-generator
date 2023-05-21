@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import NewColorDialog from './NewColorDialog';
 
-export default function NewColorCard() {
+interface PropTypes {
+  addColor: (name: string, value: string) => void;
+}
+
+export default function NewColorCard({ addColor }: PropTypes) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -34,6 +38,7 @@ export default function NewColorCard() {
       <NewColorDialog
         className={isVisible ? 'block' : 'hidden'}
         handleClose={toggleVisibility}
+        addColor={addColor}
       />
     </>
   );
