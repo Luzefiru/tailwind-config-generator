@@ -49,12 +49,12 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
               src={image ? image : ImageIcon}
             />
           </div>
-          <div className="p-4 bg-white shadow-sm rounded-lg flex items-center justify-between">
-            <div>
+          <div className="p-4 bg-white shadow-sm rounded-lg flex flex-col gap-4  sm:flex-row sm:gap-0 items-center justify-between">
+            <div className="flex flex-col items-center sm:block">
               <h2 className="mb-2 font-semibold">Upload an Image</h2>
               <input
                 aria-label="Upload a Custom Image"
-                className="text-sm"
+                className="text-[0.6rem] sm:text-sm sm:w-[80%]"
                 type="file"
                 onChange={onImageChange}
               />
@@ -70,13 +70,13 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
           <div aria-label="Buttons" className="flex gap-4 pt-4 justify-end">
             <button
               onClick={handleCancel}
-              className="shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
+              className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
             >
               Cancel
             </button>
             <button
               onClick={handleSubmit}
-              className="shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
+              className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
             >
               Add Color
             </button>
