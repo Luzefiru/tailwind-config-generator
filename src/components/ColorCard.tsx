@@ -12,7 +12,7 @@ export default function ColorCard({ name, value }: PropTypes) {
   return (
     <div
       tabIndex={0}
-      className="bg-white w-full rounded-md shadow-sm hover:shadow-md focus:shadow-lg hover:scale-105 focus:scale transition cursor-pointer relative"
+      className="bg-white w-full rounded-md shadow-sm hover:shadow-md focus:shadow-lg hover:scale-105 focus:scale-105 transition cursor-pointer relative"
       onFocus={() => {
         setIsFocused(!isFocused);
       }}
