@@ -27,10 +27,11 @@
 }
 
 @layer components {
-  .popover {
-    position: absolute;
+  .dialog {
     z-index: 2;
-    transform: translateY(30%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
   }
 
   .cover {
@@ -39,5 +40,21 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
+  }
+
+  .fade-in {
+    animation: fade-in 250ms 1 alternate cubic-bezier(0.79, 0.14, 0.15, 0.86);
+  }
+
+  @keyframes fade-in {
+    from {
+      transform: translateY(40%);
+      transform: opacity(0);
+    }
+
+    to {
+      transform: translateY(0);
+      transform: opacity(1);
+    }
   }
 }
