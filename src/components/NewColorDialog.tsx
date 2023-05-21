@@ -8,6 +8,7 @@ interface PropTypes {
 
 export default function NewColorDialog({ className, handleClose }: PropTypes) {
   const [image, setImage] = useState<string | undefined>(undefined);
+  const [color, setColor] = useState<string>('#000000');
 
   const onImageChange = (e: any) => {
     if (e.target.files && e.target.files[0]) {
@@ -21,6 +22,15 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
     handleClose();
   };
 
+  const handleColorChange = (e: any) => {
+    setColor(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log(color);
+    handleClose();
+  };
+
   return (
     <>
       <div
@@ -31,7 +41,7 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
         <div className="flex flex-col p-6 rounded-lg bg-neutral-100 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
           <div className="overflow-hidden flex-grow mb-4 bg-white shadow-sm rounded-lg flex items-center justify-center">
             <img
-              className="rounded object-contain p-2"
+              className="rounded-xl object-contain p-2"
               alt="Your Upload"
               src={image ? image : ImageIcon}
             />
@@ -50,6 +60,8 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
               aria-label="Choose a Color"
               className="h-14 w-14 rounded-full"
               type="color"
+              value={color}
+              onChange={handleColorChange}
             />
           </div>
           <div aria-label="Buttons" className="flex gap-4 pt-4 justify-end">
@@ -59,7 +71,10 @@ export default function NewColorDialog({ className, handleClose }: PropTypes) {
             >
               Cancel
             </button>
-            <button className="shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700">
+            <button
+              onClick={handleSubmit}
+              className="shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
+            >
               Add Color
             </button>
           </div>
