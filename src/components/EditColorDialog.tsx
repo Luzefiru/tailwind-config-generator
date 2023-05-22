@@ -7,6 +7,7 @@ interface PropTypes {
   className: string;
   handleClose: () => void;
   editColor: (oldName: string, newName: string, newValue: string) => void;
+  deleteColor: (nameToDelete: string) => void;
   oldName: string;
   oldValue: string;
 }
@@ -14,6 +15,7 @@ interface PropTypes {
 export default function EditColorDialog({
   className,
   handleClose,
+  deleteColor,
   editColor,
   oldName,
   oldValue,
@@ -39,8 +41,9 @@ export default function EditColorDialog({
     setNewValue(oldValue);
   };
 
-  const handleCancel = () => {
+  const handleDelete = () => {
     reverseChanges();
+    deleteColor(oldName);
     handleClose();
   };
 
@@ -141,8 +144,8 @@ export default function EditColorDialog({
           </div>
           <div aria-label="Buttons" className="flex gap-4 pt-4 justify-end">
             <button
-              onClick={handleCancel}
-              className="flex items-center gap-1 text-[0.7rem] sm:text-base shadow-sm border-2 pl-3 pr-4 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
+              onClick={handleDelete}
+              className="flex items-center gap-1 text-[0.7rem] sm:text-base shadow-sm border-2 pl-4 pr-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

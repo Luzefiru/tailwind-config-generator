@@ -8,12 +8,14 @@ interface PropTypes {
   colorUtilities: { name: string; value: string }[];
   handleAddColor: (name: string, value: string) => void;
   handleEditColor: (oldName: string, newName: string, newValue: string) => void;
+  handleDeleteColor: (nameToDelete: string) => void;
 }
 
 export default function Colors({
   colorUtilities,
   handleAddColor,
   handleEditColor,
+  handleDeleteColor,
 }: PropTypes) {
   const [editDialogIsVisible, setEditDialogIsVisible] = useState(false);
   const [editColorName, setEditColorName] = useState<string>('');
@@ -42,6 +44,7 @@ export default function Colors({
       <EditColorDialog
         className={editDialogIsVisible ? 'block' : 'hidden'}
         handleClose={toggleEditDialogVisibility}
+        deleteColor={handleDeleteColor}
         editColor={handleEditColor}
         oldName={editColorName}
         oldValue={editColorValue}

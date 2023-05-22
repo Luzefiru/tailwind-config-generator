@@ -37,12 +37,22 @@ export default function App() {
     newValue: string
   ) => {
     const newColors = [...colorUtilities];
+
     newColors.forEach((obj) => {
       if (obj.name === oldName) {
         obj.name = newName;
         obj.value = newValue;
       }
     });
+
+    handleRefreshDOM(newColors);
+  };
+
+  const handleDeleteColor = (nameToDelete: string) => {
+    const newColors = [...colorUtilities].filter(
+      (obj) => obj.name !== nameToDelete
+    );
+
     handleRefreshDOM(newColors);
   };
 
@@ -84,6 +94,7 @@ export default function App() {
             colorUtilities={colorUtilities}
             handleAddColor={handleAddColor}
             handleEditColor={handleEditColor}
+            handleDeleteColor={handleDeleteColor}
           />
         </section>
         <section
