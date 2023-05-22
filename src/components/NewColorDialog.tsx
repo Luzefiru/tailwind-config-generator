@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ImageIcon from '../assets/panorama.svg';
 import { toast } from 'react-toastify';
+import { isValidTailwindClass } from '../utils/isValidTailwindClass';
 
 interface PropTypes {
   className: string;
@@ -27,7 +28,6 @@ export default function NewColorDialog({
   const setDefault = () => {
     setName('new-color');
     setColor('#000000');
-    setImage(undefined);
   };
 
   const handleCancel = () => {
@@ -40,6 +40,21 @@ export default function NewColorDialog({
   };
 
   const handleSubmit = () => {
+    // catcher for invalid tailwind class names
+    if (!isValidTailwindClass(name)) {
+      toast.error('Invalid class name. Try again.', {
+        position: 'bottom-right',
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      return;
+    }
+
     addColor(name, color);
     toast.success(`Added ${name}`, {
       position: 'bottom-right',
@@ -52,7 +67,6 @@ export default function NewColorDialog({
       theme: 'light',
     });
     setDefault();
-
     handleClose();
   };
 
