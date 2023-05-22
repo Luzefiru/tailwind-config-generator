@@ -13,8 +13,14 @@ describe('isValidTailwindClass', () => {
     expect(result).toBeTruthy();
   });
 
+  it('should return true for `multiple-hyphen-characters`', () => {
+    const result: boolean = isValidTailwindClass('multiple-hyphen-character');
+
+    expect(result).toBeTruthy();
+  });
+
   it('should return false for `invalid class`', () => {
-    const result: boolean = isValidTailwindClass('invalid class');
+    const result: boolean = isValidTailwindClass('with space');
 
     expect(result).toBeFalsy();
   });
