@@ -1,13 +1,11 @@
 import CodeBlock from './components/ui/CodeBlock';
-import ColorCard from './components/ui/ColorCard';
-import ColorPicker from './components/ColorPicker';
+import Colors from './components/Colors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 
 import GenerateObject from './utils/GenerateObject';
 import generateTailwindConfig from './utils/GenerateTailwindConfig';
-import hash from './utils/hash';
 
 export default function App() {
   const [colorUtilities, setColorUtilities] = useState([...defaults]);
@@ -18,21 +16,34 @@ export default function App() {
     )
   );
 
-  const handleChangeColorUtilities = (
-    newColorUtilities: typeof colorUtilities
-  ) => {
+  const handleRefreshDOM = (newColorUtilities: typeof colorUtilities) => {
     setColorUtilities(newColorUtilities);
 
     setConfigCode(
       generateTailwindConfig(
-        undefined,
+        ['./src/**/*.{js,jsx,ts,tsx}'],
         GenerateObject.colors(newColorUtilities)
       )
     );
   };
 
-  const handleSubmitColorUtility = (name: string, value: string) => {
-    handleChangeColorUtilities([...colorUtilities, { name, value }]);
+  const handleAddColor = (name: string, value: string) => {
+    handleRefreshDOM([...colorUtilities, { name, value }]);
+  };
+
+  const handleEditColor = (
+    oldName: string,
+    newName: string,
+    newValue: string
+  ) => {
+    const newColors = [...colorUtilities];
+    newColors.forEach((obj) => {
+      if (obj.name === oldName) {
+        obj.name = newName;
+        obj.value = newValue;
+      }
+    });
+    handleRefreshDOM(newColors);
   };
 
   return (
@@ -69,16 +80,11 @@ export default function App() {
               </svg>
             </button>
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-y-10 px-4 md:p-0">
-            {colorUtilities.map((e) => (
-              <ColorCard
-                name={e.name}
-                value={e.value}
-                key={hash(e.name + e.value)}
-              />
-            ))}
-            <ColorPicker addColor={handleSubmitColorUtility} />
-          </div>
+          <Colors
+            colorUtilities={colorUtilities}
+            handleAddColor={handleAddColor}
+            handleEditColor={handleEditColor}
+          />
         </section>
         <section
           aria-label="Outputted Tailwind Configuration File"
