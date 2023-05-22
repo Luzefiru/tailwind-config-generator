@@ -67,7 +67,7 @@ export default function App() {
           className="col-span-7 xl:mr-16"
         >
           <div className="flex gap-4 mb-10 items-center">
-            <h1 className="text-6xl font-semibold">Colors</h1>
+            <h1 className="text-6xl font-bold">Colors</h1>
             <button
               aria-label="Add a Color"
               title="Add a Color"
