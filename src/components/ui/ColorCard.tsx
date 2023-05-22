@@ -39,7 +39,6 @@ export default function ColorCard({
       onClick={editColor}
     >
       <div
-        aria-label={isHovered ? value : name}
         style={{ backgroundColor: value }}
         className="h-16 w-full rounded"
       ></div>

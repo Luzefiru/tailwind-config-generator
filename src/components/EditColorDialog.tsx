@@ -44,6 +44,16 @@ export default function EditColorDialog({
   const handleDelete = () => {
     reverseChanges();
     deleteColor(oldName);
+    toast.error(`Deleted ${oldName}.`, {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
     handleClose();
   };
 
@@ -68,7 +78,7 @@ export default function EditColorDialog({
     }
 
     editColor(oldName, newName, newValue);
-    toast.success(`Edited ${newName}`, {
+    toast.success(`Edited ${newName}.`, {
       position: 'bottom-right',
       autoClose: 2000,
       hideProgressBar: false,

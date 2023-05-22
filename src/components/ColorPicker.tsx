@@ -19,7 +19,7 @@ export default function ColorPicker({ addColor }: PropTypes) {
         aria-label="Add a Color"
         title="Add a Color"
         tabIndex={0}
-        className="h-16 w-full rounded-md hover:scale-105 transition cursor-pointer relative"
+        className="h-16 w-full rounded-md hover:scale-105 focus:scale-105 transition cursor-pointer relative"
       >
         <div className="hover:border-zinc-300 hover:text-zinc-300 hover:animate-pulse  transition-colors h-full w-full bg-zinc-100 rounded-md border-[3.5px] border-neutral-200 text-neutral-200 grid place-content-center">
           <svg
