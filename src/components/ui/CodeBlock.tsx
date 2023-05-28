@@ -16,7 +16,7 @@ export default function CodeBlock({ content }: PropTypes) {
     <>
       <pre
         aria-label="Your Tailwind CSS Configuation File"
-        className="relative h-[80vh] rounded-lg"
+        className="relative h-[80vh] rounded-lg -z-10"
       >
         <code className="language-javascript">{content}</code>
         <button
