@@ -1,0 +1,13 @@
+services:
+  app:
+    image: tailwind-config-generator-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app/src
+    environment:
+      - WATCHPACK_POLLING=true
+    container_name: dev-tw-app

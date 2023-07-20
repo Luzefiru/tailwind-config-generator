@@ -1,0 +1,13 @@
+services:
+  app:
+    image: tailwind-config-generator
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    container_name: tw-app
+  # docker compose run debug wget -O - http://app:80
+  debug:
+    image: busybox
+    container_name: debug
