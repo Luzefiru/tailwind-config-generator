@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Installing Dependencies
+        run: npm install
+      - name: Build Step
+        run: npm run build
+      - name: Integration Tests
+        run: CI=true npm run test
+      - name: Finish
+        run: echo 'Finish Checks'
