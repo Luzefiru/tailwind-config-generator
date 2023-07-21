@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  pipeline:
+  test:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -24,8 +24,19 @@ jobs:
         run: CI=true npm run test
       - name: Finish Checks
         run: echo 'Finish Checks'
-      - name: Deploy to GH Pages # deploys to package.json's "homepage": "http://luzefiru.github.io/tailwind-config-generator"
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GH Actions"
-          npm run deploy
+  deploy:
+    needs: test
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
