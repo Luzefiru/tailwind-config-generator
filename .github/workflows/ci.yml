@@ -22,5 +22,7 @@ jobs:
         run: npm run build
       - name: Integration Tests
         run: CI=true npm run test
-      - name: Finish
+      - name: Finish Checks
         run: echo 'Finish Checks'
+      - name: Deploy to GH Pages # deploys to package.json's "homepage": "http://luzefiru.github.io/tailwind-config-generator"
+        run: npm run deploy
