@@ -74,20 +74,25 @@ export default function ImportColorsDialog({
           ></textarea>
           <div
             aria-label="Buttons"
-            className="flex justify-end gap-4 pt-4 mt-auto"
+            className="flex flex-col justify-around gap-4 pt-4 mt-auto lg:flex-row"
           >
-            <button
-              onClick={handleCancel}
-              className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleSubmit}
-              className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
-            >
-              Import
-            </button>
+            <h3 className="self-center italic font-medium mr-full">
+              Note: values must be HEX color codes.
+            </h3>
+            <div className="flex justify-center gap-4 lg:justify-between">
+              <button
+                onClick={handleCancel}
+                className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSubmit}
+                className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
+              >
+                Import
+              </button>
+            </div>
           </div>
         </div>
       </section>
