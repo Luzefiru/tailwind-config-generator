@@ -71,22 +71,16 @@ export default function App() {
             <button
               aria-label="Add a Color"
               title="Add a Color"
-              className="rounded-md p-1 hover:bg-zinc-200 transition-colors"
+              className="rounded-md p-1 hover:bg-zinc-200 transition-colors relative top-1 rotate-90"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                enableBackground="new 0 0 24 24"
-                height="2.75rem"
                 viewBox="0 0 24 24"
+                height="2.75rem"
                 width="2.75rem"
-                fill="currentColor"
               >
-                <g>
-                  <rect fill="none" height="24" width="24" />
-                </g>
-                <g>
-                  <path d="M14,10H3v2h11V10z M14,6H3v2h11V6z M18,14v-4h-2v4h-4v2h4v4h2v-4h4v-2H18z M3,16h7v-2H3V16z" />
-                </g>
+                <title>Import Colors</title>
+                <path d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z" />
               </svg>
             </button>
           </div>
