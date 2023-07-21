@@ -2,7 +2,18 @@
 
 A visual solution to design system setup for Tailwind CSS.
 
-## Usage
+![](https://github.com/Luzefiru/tailwind-config-generator/actions/workflows/ci-cd.yml/badge.svg)
+
+<img src="./demo.gif" />
+
+# Features
+
+- JSON color object imports
+- color picker with image upload support
+- classname & HEX value validation
+- copy a ready-made `tailwind.config.js` straight to your clipboard
+
+# Usage
 
 ```bash
 git clone https://github.com/Luzefiru/tailwind-config-generator.git
@@ -30,8 +41,6 @@ npm ci
 npm run start
 ```
 
-## TODO
+# Credits
 
-1. Create a function to import colors from an existing `tailwind.config.js` file.
-2. Add backend server data persistence with Express.
-3. Create a gallery to share color systems with other users.
+- <a href="https://www.vecteezy.com/free-vector/bird">Bird Vector Logo by Vecteezy</a>
