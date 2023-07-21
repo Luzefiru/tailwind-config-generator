@@ -29,9 +29,7 @@ const isValidTailwindJSON = (str: string): boolean => {
  */
 const fromJSON = (json: string) => {
   if (!isValidTailwindJSON(json)) {
-    throw new SyntaxError(
-      'The JSON is not a valid tailwind.config.js "colors" object.'
-    );
+    throw new SyntaxError('Invalid JSON syntax.');
   }
 
   const nameValuePairs = Object.entries(JSON.parse(json)).map(

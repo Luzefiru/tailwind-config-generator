@@ -45,6 +45,23 @@
     left: 50%;
   }
 
+  .code-dialog {
+    color: #f8f8f2;
+    background: 0 0;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    hyphens: none;
+  }
+
   .cover {
     position: fixed;
     top: 0px;

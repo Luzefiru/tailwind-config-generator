@@ -1,5 +1,6 @@
 import CodeBlock from './components/CodeBlock/CodeBlock';
 import Colors from './components/Colors/Colors';
+import ImportColorsDialog from './components/Colors/ImportColorsDialog';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
@@ -8,6 +9,7 @@ import GenerateObject from './utils/GenerateObject';
 import generateTailwindConfig from './utils/GenerateTailwindConfig';
 
 export default function App() {
+  const [isImportingColors, setIsImportingColors] = useState(false);
   const [colorUtilities, setColorUtilities] = useState([...defaults]);
   const [configCode, setConfigCode] = useState(
     generateTailwindConfig(
@@ -56,22 +58,36 @@ export default function App() {
     handleRefreshDOM(newColors);
   };
 
+  const importColorUtilities = (colors: typeof colorUtilities) => {
+    handleRefreshDOM(colors);
+  };
+
   return (
     <div className="App">
-      <header className="bg-zinc-50 h-16 mb-10 flex justify-center items-center border-b-2">
+      <header className="flex items-center justify-center h-16 mb-10 border-b-2 bg-zinc-50">
         <div className="text-3xl font-semibold">Tailwind Design System</div>
       </header>
-      <main className="grid grid-cols-1 xl:grid-cols-12 mx-4 md:mx-10 lg:mx-16">
+      <main className="grid grid-cols-1 mx-4 xl:grid-cols-12 md:mx-10 lg:mx-16">
         <section
           aria-label="Design System Configuration"
           className="col-span-7 xl:mr-16"
         >
-          <div className="flex gap-4 mb-10 items-center">
+          <div className="flex items-center gap-4 mb-10">
             <h1 className="text-6xl font-bold">Colors</h1>
+            <ImportColorsDialog
+              className={isImportingColors ? 'block' : 'hidden'}
+              importColorUtilities={importColorUtilities}
+              handleClose={() => {
+                setIsImportingColors(!isImportingColors);
+              }}
+            />
             <button
+              onClick={() => {
+                setIsImportingColors(true);
+              }}
               aria-label="Add a Color"
               title="Add a Color"
-              className="rounded-md p-1 hover:bg-zinc-200 transition-colors relative top-1 rotate-90"
+              className="relative p-1 transition-colors rotate-90 rounded-md hover:bg-zinc-200 top-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +109,7 @@ export default function App() {
         </section>
         <section
           aria-label="Outputted Tailwind Configuration File"
-          className="col-span-5 overflow-y-hidden mt-12 z-0 xl:mt-0"
+          className="z-0 col-span-5 mt-12 overflow-y-hidden xl:mt-0"
         >
           <CodeBlock content={configCode} />
         </section>
