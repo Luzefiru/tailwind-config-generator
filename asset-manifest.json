@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tailwind-config-generator/static/css/main.a2c5b5de.css",
+    "main.js": "/tailwind-config-generator/static/js/main.116d5447.js",
+    "static/media/logo.jpg": "/tailwind-config-generator/static/media/logo.c5f1e4cffe506dea8e03.jpg",
+    "index.html": "/tailwind-config-generator/index.html",
+    "static/media/panorama.svg": "/tailwind-config-generator/static/media/panorama.624e7452173c3bf0089da060b886464d.svg",
+    "main.a2c5b5de.css.map": "/tailwind-config-generator/static/css/main.a2c5b5de.css.map",
+    "main.116d5447.js.map": "/tailwind-config-generator/static/js/main.116d5447.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a2c5b5de.css",
+    "static/js/main.116d5447.js"
+  ]
+}
