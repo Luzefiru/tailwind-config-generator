@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ImageIcon from '../assets/panorama.svg';
+import ImageIcon from '../../assets/panorama.svg';
 import { toast } from 'react-toastify';
-import { isValidTailwindClass } from '../utils/isValidTailwindClass';
+import { isValidTailwindClass } from '../../utils/isValidTailwindClass';
 
 interface PropTypes {
   className: string;
@@ -78,9 +78,9 @@ export default function NewColorDialog({
     <>
       <div
         onClick={handleClose}
-        className={`cover bg-zinc-700 opacity-40 ${className}`}
+        className={`cover bg-zinc-700 z-30 opacity-40 ${className}`}
       />
-      <section className={`dialog fade-in ${className}`}>
+      <section className={`dialog fade-in z-40 ${className}`}>
         <div className="flex flex-col p-6 rounded-lg bg-neutral-100 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
           <pre className="flex items-center mb-2">
             <div className="relative w-full">

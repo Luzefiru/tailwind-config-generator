@@ -1,22 +1,33 @@
-import { useState } from 'react';
-import ImageIcon from '../../../assets/panorama.svg';
+import { useState, useEffect } from 'react';
+import ImageIcon from '../../assets/panorama.svg';
 import { toast } from 'react-toastify';
-import { isValidTailwindClass } from '../../../utils/isValidTailwindClass';
+import { isValidTailwindClass } from '../../utils/isValidTailwindClass';
 
 interface PropTypes {
   className: string;
   handleClose: () => void;
-  addColor: (name: string, value: string) => void;
+  editColor: (oldName: string, newName: string, newValue: string) => void;
+  deleteColor: (nameToDelete: string) => void;
+  oldName: string;
+  oldValue: string;
 }
 
-export default function NewColorDialog({
+export default function EditColorDialog({
   className,
   handleClose,
-  addColor,
+  deleteColor,
+  editColor,
+  oldName,
+  oldValue,
 }: PropTypes) {
   const [image, setImage] = useState<string | undefined>(undefined);
-  const [name, setName] = useState<string>('new-color');
-  const [color, setColor] = useState<string>('#000000');
+  const [newName, setNewName] = useState<string>('');
+  const [newValue, setNewValue] = useState<string>('');
+
+  useEffect(() => {
+    setNewName(oldName);
+    setNewValue(oldValue);
+  }, [oldName, oldValue]);
 
   const onImageChange = (e: any) => {
     if (e.target.files && e.target.files[0]) {
@@ -25,23 +36,34 @@ export default function NewColorDialog({
     }
   };
 
-  const setDefault = () => {
-    setName('new-color');
-    setColor('#000000');
+  const reverseChanges = () => {
+    setNewName(oldName);
+    setNewValue(oldValue);
   };
 
-  const handleCancel = () => {
-    setDefault();
+  const handleDelete = () => {
+    reverseChanges();
+    deleteColor(oldName);
+    toast.error(`Deleted ${oldName}.`, {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
     handleClose();
   };
 
   const handleColorChange = (e: any) => {
-    setColor(e.target.value);
+    setNewValue(e.target.value);
   };
 
   const handleSubmit = () => {
     // catcher for invalid tailwind class names
-    if (!isValidTailwindClass(name)) {
+    if (!isValidTailwindClass(newName)) {
       toast.error('Invalid class name. Try again.', {
         position: 'bottom-right',
         autoClose: 2500,
@@ -55,8 +77,8 @@ export default function NewColorDialog({
       return;
     }
 
-    addColor(name, color);
-    toast.success(`Added ${name}`, {
+    editColor(oldName, newName, newValue);
+    toast.success(`Edited ${newName}.`, {
       position: 'bottom-right',
       autoClose: 2000,
       hideProgressBar: false,
@@ -66,29 +88,29 @@ export default function NewColorDialog({
       progress: undefined,
       theme: 'light',
     });
-    setDefault();
     handleClose();
   };
 
   const handleTextChange = (e: any) => {
-    setName(e.target.value);
+    setNewName(e.target.value);
   };
 
   return (
     <>
       <div
         onClick={handleClose}
-        className={`cover bg-zinc-700 opacity-40 ${className}`}
+        className={`cover bg-zinc-700 z-30 opacity-40 ${className}`}
       />
-      <section className={`dialog fade-in ${className}`}>
+      <section className={`dialog fade-in z-40 ${className}`}>
         <div className="flex flex-col p-6 rounded-lg bg-neutral-100 relative w-[80vw] -ml-[40vw] h-[80vh] -mt-[40vh] lg:w-[40vw] lg:-ml-[20vw]">
           <pre className="flex items-center mb-2">
             <div className="relative w-full">
               <input
+                aria-label="Edit Color Name"
                 onChange={handleTextChange}
                 className="span w-full pl-[36px] rounded-lg text-2xl font-semibold bg-transparent"
                 type="text"
-                value={name}
+                value={newName}
               />
               <svg
                 className="absolute left-1 top-1"
@@ -126,22 +148,32 @@ export default function NewColorDialog({
               aria-label="Choose a Color"
               className="h-14 w-14 rounded-full cursor-pointer"
               type="color"
-              value={color}
+              value={newValue}
               onChange={handleColorChange}
             />
           </div>
           <div aria-label="Buttons" className="flex gap-4 pt-4 justify-end">
             <button
-              onClick={handleCancel}
-              className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
+              onClick={handleDelete}
+              className="flex items-center gap-1 text-[0.7rem] sm:text-base shadow-sm border-2 pl-4 pr-5 py-[0.4rem] rounded-md font-medium transition-colors border-red-600 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white"
             >
-              Cancel
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="100%"
+                viewBox="0 96 960 960"
+              >
+                <path
+                  fill="currentColor"
+                  d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"
+                />
+              </svg>
+              Delete
             </button>
             <button
               onClick={handleSubmit}
               className="text-[0.7rem] sm:text-base shadow-sm border-2 px-5 py-[0.4rem] rounded-md font-medium transition-colors border-emerald-500 text-white bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700"
             >
-              Add Color
+              Confirm
             </button>
           </div>
         </div>

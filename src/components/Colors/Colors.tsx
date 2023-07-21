@@ -1,5 +1,5 @@
-import hash from '../utils/hash';
-import ColorCard from './ui/ColorCard';
+import hash from '../../utils/hash';
+import ColorCard from './ColorCard';
 import ColorPicker from './ColorPicker';
 import EditColorDialog from './EditColorDialog';
 import { useState } from 'react';
@@ -20,6 +20,7 @@ export default function Colors({
   const [editDialogIsVisible, setEditDialogIsVisible] = useState(false);
   const [editColorName, setEditColorName] = useState<string>('');
   const [editColorValue, setEditColorValue] = useState<string>('');
+
   const toggleEditDialogVisibility = () => {
     setEditDialogIsVisible(!editDialogIsVisible);
   };

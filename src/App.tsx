@@ -1,5 +1,5 @@
-import CodeBlock from './components/ui/CodeBlock';
-import Colors from './components/Colors';
+import CodeBlock from './components/CodeBlock/CodeBlock';
+import Colors from './components/Colors/Colors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
@@ -99,7 +99,7 @@ export default function App() {
         </section>
         <section
           aria-label="Outputted Tailwind Configuration File"
-          className="col-span-5 overflow-y-hidden mt-12 xl:mt-0"
+          className="col-span-5 overflow-y-hidden mt-12 z-0 xl:mt-0"
         >
           <CodeBlock content={configCode} />
         </section>
